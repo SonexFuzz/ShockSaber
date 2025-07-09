@@ -1,0 +1,6 @@
+<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://monkeymanboy.github.io/BSML-Docs/BSMLSchema.xsd'>
+    <vertical vertical-fit='PreferredSize' preferred-height='14'>
+        <slider-setting id='intensity_slider' value ='intensity_value' show-buttons='true' on-change='set_intensity_value' apply-on-change='true' bind-value='true' text='Desired intensity' increment='1' min='0' max='100' formatter='intensity_slider_formatter'></slider-setting>
+        <slider-setting id='duration_slider' value ='duration_value' show-buttons='true' on-change='set_duration_value' apply-on-change='true' bind-value='true' text='Desired duration' increment='1' min='0' max='15' formatter='duration_slider_formatter'></slider-setting>
+    </vertical>
+</bg>

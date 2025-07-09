@@ -1,0 +1,13 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShockSaber", "ShockSaber.csproj", "{125E1137-0587-4615-A7E3-F7FD31DD43F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		IDK|Any CPU = IDK|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{125E1137-0587-4615-A7E3-F7FD31DD43F9}.IDK|Any CPU.ActiveCfg = Release|Any CPU
+		{125E1137-0587-4615-A7E3-F7FD31DD43F9}.IDK|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
