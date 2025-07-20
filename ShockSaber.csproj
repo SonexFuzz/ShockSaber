@@ -12,7 +12,7 @@
         <EnableFrameworkPathOverride>true</EnableFrameworkPathOverride>
         <FrameworkPathOverride>$(BeatSaberDir)\Beat Saber_Data\Managed</FrameworkPathOverride>
         <MarkPackageReferencesAsExternallyResolved>false</MarkPackageReferencesAsExternallyResolved>
-        <Configurations>Debug;Release;IDK</Configurations>
+        <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 

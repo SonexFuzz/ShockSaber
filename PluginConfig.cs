@@ -6,11 +6,13 @@ namespace ShockSaber.config;
 
 public class PluginConfig
 {
-public virtual string username { get; set; } = "";
-public virtual string apiKey { get; set; } = "";
-public virtual string Code { get; set; } = "";
-public virtual string senderName { get; set; } = "";
-public virtual string Duration { get; set; } = "";
-public virtual string Intensity { get; set; } = "";
-
+    public virtual bool Enable { get; set; } = false;
+    public virtual string Delay { get; set; } = "";
+    public virtual string username { get; set; } = "";
+    public virtual string apiKey { get; set; } = "";
+    public virtual string Code { get; set; } = "";
+    public virtual string senderName { get; set; } = "";
+    public virtual bool ComboShock { get; set; } = false;
+    public virtual string ComboShockDuration { get; set; } = "";
+    public virtual string ComboShockIntensity { get; set; } = "";
 }

@@ -7,9 +7,9 @@ namespace ShockSaber.Trigger
 {
     public class Triggers : IInitializable, IDisposable
     {
-
         private readonly PiShockAPI _api;
         private readonly PluginConfig _config;
+        private DateTime _lastTriggerTime = DateTime.MinValue;
 
         public Triggers(PiShockAPI api, PluginConfig config)
         {
@@ -29,16 +29,32 @@ namespace ShockSaber.Trigger
 
         void BSEvents_comboDidBreak()
         {
-            if (int.TryParse(_config.Intensity, out int intensity) &&
-                int.TryParse(_config.Duration, out int duration))
+            if (!_config.Enable || !_config.ComboShock)
+                return;
+
+            if (int.TryParse(_config.ComboShockIntensity, out int intensity) &&
+                int.TryParse(_config.ComboShockDuration, out int duration) &&
+                int.TryParse(_config.Delay, out int delaySeconds))
             {
-                _ = _api.Shock(intensity, duration);
-                Plugin.Log.Debug($"Combo Break: Shock({intensity}, {duration})");
+                DateTime now = DateTime.Now;
+
+                if ((now - _lastTriggerTime).TotalSeconds >= delaySeconds)
+                {
+                    _lastTriggerTime = now;
+                    _ = _api.Shock(intensity, duration);
+                    Plugin.Log.Debug($"Combo Break: Shock({intensity}, {duration})");
+                }
+                else
+                {
+                    double remaining = delaySeconds - (now - _lastTriggerTime).TotalSeconds;
+                    Plugin.Log.Debug($"Combo Break ignored: {remaining:0.00}s remaining in delay");
+                }
             }
             else
             {
                 Plugin.Log.Warn("Invalid intensity/duration in config");
             }
         }
+
     }
 }
