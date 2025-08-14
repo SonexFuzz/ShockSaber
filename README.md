@@ -4,7 +4,7 @@ A basic Pishock integration mod for Beat Saber. Currently only supports shock on
 
 # Configurations
 Install the mod and run the game at least once to generate the config. All the api stuff is currently configured through the cfg file.
-You can get your Pishock api key [here](https://pishock.com/#/account) and the access code [here](https://pishock.com/#/control)
+You can get your Pishock api and username key [here](https://pishock.com/#/account) and the access code [here](https://pishock.com/#/control)
 
 ## Ingame configurations
 The duration and intensity can be adjusted with the ingame menu

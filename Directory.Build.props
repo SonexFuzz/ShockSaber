@@ -7,7 +7,7 @@
     <PluginId>ShockSaber</PluginId>
     <PluginName>ShockSaber</PluginName>
     <Authors>Xironix</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <GameVersion>1.39.1</GameVersion>
     <Description>Pishock integration</Description>
     <!--<PluginIcon></PluginIcon>-->
