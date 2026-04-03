@@ -1,5 +1,6 @@
 using Zenject;
 using ShockSaber.UI;
+
 namespace ShockSaber.Installers;
 internal class MenuInstaller : Installer
 {

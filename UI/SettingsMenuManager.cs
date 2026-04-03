@@ -9,9 +9,12 @@ internal class SettingsMenuManager : IInitializable, IDisposable
 {
     private readonly SettingsMenu _settingsMenu;
     private readonly BSMLSettings bsmlSettings;
-        
-    private const string MenuName = nameof(ShockSaber);
-    private const string ResourcePath = nameof(ShockSaber) + ".UI.modUI.bsml";
+
+    private const string MenuName1 = "ShockSaber Config";
+    private const string ResourcePath1 = nameof(ShockSaber) + ".UI.modUI.bsml";
+
+    private const string MenuName2 = "ShockSaber Toggles";
+    private const string ResourcePath2 = nameof(ShockSaber) + ".UI.modUI2.bsml";
 
     public SettingsMenuManager(SettingsMenu settingsMenu, BSMLSettings bsmlSettings)
     {
@@ -21,7 +24,8 @@ internal class SettingsMenuManager : IInitializable, IDisposable
 
     public void Initialize()
     {
-        GameplaySetup.Instance.AddTab(MenuName, ResourcePath, _settingsMenu);
+        GameplaySetup.Instance.AddTab(MenuName1, ResourcePath1, _settingsMenu);
+        GameplaySetup.Instance.AddTab(MenuName2, ResourcePath2, _settingsMenu);
     }
 
     public void Dispose()

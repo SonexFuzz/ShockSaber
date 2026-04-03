@@ -1,60 +1,68 @@
-using ShockSaber.API;
-using ShockSaber.config;
 using Zenject;
 using System;
 
-namespace ShockSaber.Trigger
+namespace ShockSaber
 {
     public class Triggers : IInitializable, IDisposable
     {
-        private readonly PiShockAPI _api;
+        private readonly PiShockLogin _piShockLogin;
         private readonly PluginConfig _config;
         private DateTime _lastTriggerTime = DateTime.MinValue;
 
-        public Triggers(PiShockAPI api, PluginConfig config)
+        public Triggers(PiShockLogin piShockLogin, PluginConfig config)
         {
-            _api = api;
+            _piShockLogin = piShockLogin;
             _config = config;
         }
 
         public void Initialize()
         {
-            BS_Utils.Utilities.BSEvents.comboDidBreak += BSEvents_comboDidBreak;
+            BS_Utils.Utilities.BSEvents.comboDidBreak += OnComboDidBreak;
         }
 
         public void Dispose()
         {
-            BS_Utils.Utilities.BSEvents.comboDidBreak -= BSEvents_comboDidBreak;
+            BS_Utils.Utilities.BSEvents.comboDidBreak -= OnComboDidBreak;
         }
 
-        void BSEvents_comboDidBreak()
+        private void OnComboDidBreak()
         {
-            if (!_config.Enable || !_config.ComboShock)
+            if (!_config.Enable || _piShockLogin.Controller == null)
                 return;
 
-            if (int.TryParse(_config.ComboShockIntensity, out int intensity) &&
-                int.TryParse(_config.ComboShockDuration, out int duration) &&
-                int.TryParse(_config.Delay, out int delaySeconds))
-            {
-                DateTime now = DateTime.Now;
+            int shock_intensity = _config.ComboShockIntensity;
+            int shock_duration = _config.ComboShockDuration;
+            int vibrate_intensity = _config.ComboVibrateIntensity;
+            int vibrate_duration = _config.ComboVibrateDuration;
+            int delaySeconds = _config.Delay;
 
-                if ((now - _lastTriggerTime).TotalSeconds >= delaySeconds)
+            DateTime now = DateTime.Now;
+
+            if ((now - _lastTriggerTime).TotalSeconds >= delaySeconds)
+            {
+                _lastTriggerTime = now;
+
+                // Shock
+                if (_config.ComboShock)
                 {
-                    _lastTriggerTime = now;
-                    _ = _api.Shock(intensity, duration);
-                    Plugin.Log.Debug($"Combo Break: Shock({intensity}, {duration})");
+                    _piShockLogin.Controller.OperatePiShock(shock_intensity, shock_duration, PiShockLibrary.Enums.PiShockOperations.Shock
+                    );
+                    Plugin.Log.Debug($"Combo Break: Shock({shock_intensity}%, {shock_duration}s)");
                 }
-                else
+
+                // Vibrate
+                if (_config.ComboVibrate)
                 {
-                    double remaining = delaySeconds - (now - _lastTriggerTime).TotalSeconds;
-                    Plugin.Log.Debug($"Combo Break ignored: {remaining:0.00}s remaining in delay");
+                    _piShockLogin.Controller.OperatePiShock(vibrate_intensity, vibrate_duration, PiShockLibrary.Enums.PiShockOperations.Vibrate
+                    );
+                    Plugin.Log.Debug($"Combo Break: Vibrate({vibrate_intensity}%, {vibrate_duration}s)");
                 }
             }
             else
             {
-                Plugin.Log.Warn("Invalid intensity/duration in config");
+                double remaining = delaySeconds - (now - _lastTriggerTime).TotalSeconds;
+                Plugin.Log.Debug($"Combo Break ignored: {remaining:0.00}s remaining in delay");
             }
         }
-
     }
 }

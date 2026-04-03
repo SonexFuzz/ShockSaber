@@ -25,6 +25,14 @@
 
     <ItemGroup>
         <EmbeddedResource Include="UI\modUI.bsml" />
+        <None Remove="UI\modUI2.bsml" />
+        <EmbeddedResource Include="UI\modUI2.bsml" />
+        <None Remove="UI\shock.png" />
+        <EmbeddedResource Include="UI\shock.png" />
+        <None Remove="UI\vibrate.png" />
+        <EmbeddedResource Include="UI\vibrate.png" />
+        <None Remove="UI\on_off.png" />
+        <EmbeddedResource Include="UI\on_off.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -68,6 +76,9 @@
         <Reference Include="netstandard"/>
         <Reference Include="Newtonsoft.Json">
           <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Libs\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="PiShockClassLibrary">
+          <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\Beat Saber\Plugins\PiShockClassLibrary.dll</HintPath>
         </Reference>
         <Reference Include="SiraUtil">
             <HintPath>$(BeatSaberDir)\Plugins\SiraUtil.dll</HintPath>

@@ -1,5 +1,4 @@
 using BeatSaberMarkupLanguage.Attributes;
-using ShockSaber.config;
 
 namespace ShockSaber.UI;
 
@@ -17,15 +16,10 @@ internal class SettingsMenu
     [UIValue("delay_value")]
     private float Delay_value
     {
-        get => float.TryParse(_config.Delay, out var v) ? v : 3f;
-        set => _config.Delay = value.ToString("0");
+        get => _config.Delay;
+        set => _config.Delay = (int)value;
     }
-
-    [UIAction("set_delay_value")]
-    private void Set_Delay_value(float value)
-    {
-        _config.Delay = value.ToString("0");
-    }
+    
     //Enable switch
     [UIValue("enable")]
     private bool Enabled
@@ -36,42 +30,10 @@ internal class SettingsMenu
             _config.Enable = value;
         }
     }
-
-    [UIAction("set_enabled")]
-    private void SetEnabled(bool value)
-    {
-        Enabled = value;
-    }
     
-    //Combo Break
-    [UIValue("intensity_value")]
-    private float Intensity_value
-    {
-        get => float.TryParse(_config.ComboShockIntensity, out var v) ? v : 50f;
-        set => _config.ComboShockIntensity = value.ToString("0");
-    }
-
-    [UIAction("set_intensity_value")]
-    private void Set_Intensity_value(float value)
-    {
-        _config.ComboShockIntensity = value.ToString("0");
-    }
-    
-    [UIValue("duration_value")]
-    private float Duration_value
-    {
-        get => float.TryParse(_config.ComboShockDuration, out var v) ? v : 3f;
-        set => _config.ComboShockDuration = value.ToString("0");
-    }
-
-    [UIAction("set_duration_value")]
-    private void Set_Duration_value(float value)
-    {
-        _config.ComboShockDuration = value.ToString("0");
-    }
-    
-    [UIValue("enable_cs")]
-    private bool Enabled_CS
+    //Combo Shock Toggle
+    [UIValue("enable_comboshock")]
+    private bool Enabled_ComboShock
     {
         get => _config.Enable;
         set
@@ -79,11 +41,48 @@ internal class SettingsMenu
             _config.ComboShock = value;
         }
     }
-
-    [UIAction("set_cs_enabled")]
-    private void SetEnabled_CS(bool value)
+    
+    //Combo Shock Strength
+    [UIValue("comboshock_intensity_value")]
+    private float ComboShock_Intensity_value
     {
-        Enabled_CS = value;
+        get => _config.ComboShockIntensity;
+        set => _config.ComboShockIntensity = (int)value;
+    }
+    
+    //Combo Shock Duration 
+    [UIValue("comboshock_duration_value")]
+    private float ComboShock_Duration_value
+    {
+        get => _config.ComboShockDuration;
+        set => _config.ComboShockDuration = (int)value;
+    }
+
+    //Combo Vibrate Toggle
+    [UIValue("enable_combovibrate")]
+    private bool Enabled_ComboVibrate
+    {
+        get => _config.Enable;
+        set
+        {
+            _config.ComboVibrate = value;
+        }
+    }
+    
+    //Combo Vibrate Strength
+    [UIValue("combovibrate_intensity_value")]
+    private float ComboVibrate_Intensity_value
+    {
+        get => _config.ComboVibrateIntensity;
+        set => _config.ComboVibrateIntensity = (int)value;
+    }
+
+    //Combo Vibrate Duration 
+    [UIValue("combovibrate_duration_value")]
+    private float ComboVibrate_Duration_value
+    {
+        get => _config.ComboVibrateDuration;
+        set => _config.ComboVibrateDuration = (int)value;
     }
     
     //Formatters
@@ -92,5 +91,4 @@ internal class SettingsMenu
     
     [UIAction("duration_slider_formatter")]
     private string Duration_Slider_Formatter(float value_d) => $"{value_d.ToString("0")}s";
-    
 }

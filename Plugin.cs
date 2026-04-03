@@ -3,7 +3,6 @@ using IPA.Config.Stores;
 using IPA.Loader;
 using SiraUtil.Zenject;
 using ShockSaber.Installers;
-using ShockSaber.config;
 using IpaLogger = IPA.Logging.Logger;
 using IpaConfig = IPA.Config.Config;
 
@@ -20,8 +19,7 @@ public class Plugin
     {
         Log = ipaLogger;
         zenjector.UseLogger(Log);
-
-
+        
         var pluginConfig = ipaConfig.Generated<PluginConfig>();
         
         zenjector.Install<AppInstaller>(Location.App, pluginConfig);

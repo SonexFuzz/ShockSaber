@@ -1,5 +1,5 @@
 using Zenject;
-using ShockSaber.config;
+
 namespace ShockSaber.Installers;
 
 internal class AppInstaller : Installer
@@ -14,5 +14,6 @@ internal class AppInstaller : Installer
     public override void InstallBindings()
     {
         Container.BindInstance(pluginConfig).AsSingle();
+        Container.BindInterfacesAndSelfTo<PiShockLogin>().AsSingle().NonLazy();
     }
 }

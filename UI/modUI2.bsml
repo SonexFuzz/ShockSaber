@@ -1,0 +1,16 @@
+<bg xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://monkeymanboy.github.io/BSML-Docs/BSMLSchema.xsd'>
+    <scroll-view id="ShockSaberScroll" preferred-height="70">
+        <vertical spacing="2" padding="1" horizontal-fit="PreferredSize" vertical-fit="PreferredSize" child-alignment="MiddleCenter">
+            <text text="Full toggle" align="Center" font-size="6"/>
+            <horizontal spacing="4" horizontal-fit="PreferredSize" child-control-width="false" child-expand-width="false" child-alignment="MiddleCenter">
+                <modifier value="enable" text="Full toggle" apply-on-change="true" source="ShockSaber.UI.on_off.png" hover-hint="Enable the mod"/>
+            </horizontal>
+            <text text="Combo Break" align="Center" font-size="4"/>
+            <horizontal spacing="4" horizontal-fit="PreferredSize" child-control-width="false" child-expand-width="false" child-alignment="MiddleCenter">
+                <modifier value="enable_comboshock" text="Shock" apply-on-change="true" source="ShockSaber.UI.shock.png" hover-hint="Shock on combo break"/>
+                <modifier value="enable_combovibrate" text="Vibrate" apply-on-change="true" source="ShockSaber.UI.vibrate.png" hover-hint="Vibrate on combo break"/>
+            </horizontal>
+            <text text="More stuff soon tm...." align="Center" font-size="2"/>
+        </vertical>
+    </scroll-view>
+</bg>
