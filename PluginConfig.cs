@@ -17,4 +17,17 @@ public class PluginConfig
     public virtual bool ComboVibrate { get; set; } = false;
     public virtual int ComboVibrateDuration { get; set; } = 2;
     public virtual int ComboVibrateIntensity { get; set; } = 50;
+    public virtual bool LevelFailedShock { get; set; } = false;
+    public virtual int LevelFailedShockDuration { get; set; } = 2;
+    public virtual int LevelFailedShockIntensity { get; set; } = 50;
+    public virtual bool LevelFailedVibrate { get; set; } = false;
+    public virtual int LevelFailedVibrateDuration { get; set; } = 2;
+    public virtual int LevelFailedVibrateIntensity { get; set; } = 50;
+    public virtual bool AccuracyShock { get; set; } = false;
+    public virtual float RequiredAccuracy  { get; set; } = 90;
+    public virtual int AccuracyShockDuration { get; set; } = 2;
+    public virtual int AccuracyShockIntensity { get; set; } = 50;
+    public virtual bool AccuracyVibrate { get; set; } = false;
+    public virtual int AccuracyVibrateDuration { get; set; } = 2;
+    public virtual int AccuracyVibrateIntensity { get; set; } = 50;
 }

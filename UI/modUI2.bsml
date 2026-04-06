@@ -10,7 +10,17 @@
                 <modifier value="enable_comboshock" text="Shock" apply-on-change="true" source="ShockSaber.UI.shock.png" hover-hint="Shock on combo break"/>
                 <modifier value="enable_combovibrate" text="Vibrate" apply-on-change="true" source="ShockSaber.UI.vibrate.png" hover-hint="Vibrate on combo break"/>
             </horizontal>
-            <text text="More stuff soon tm...." align="Center" font-size="2"/>
+            <text text="Level Failed" align="Center" font-size="4"/>
+            <horizontal spacing="4" horizontal-fit="PreferredSize" child-control-width="false" child-expand-width="false" child-alignment="MiddleCenter">
+                <modifier value="enable_levelfailedshock" text="Shock" apply-on-change="true" source="ShockSaber.UI.shock.png" hover-hint="Shock on level fail"/>
+                <modifier value="enable_levelfailedvibrate" text="Vibrate" apply-on-change="true" source="ShockSaber.UI.vibrate.png" hover-hint="Vibrate on level fail"/>
+            </horizontal>
+            <text text="Accuracy" align="Center" font-size="4"/>
+            <slider-setting value="accuracy_value" show-buttons="true" apply-on-change="true" bind-value="true" text="Required Accuracy" increment="0.01" min="0" max="100" formatter="accuracy_slider_formatter"/>
+            <horizontal spacing="4" horizontal-fit="PreferredSize" child-control-width="false" child-expand-width="false" child-alignment="MiddleCenter">
+                <modifier value="enable_accshock" text="Shock" apply-on-change="true" source="ShockSaber.UI.shock.png" hover-hint="Shock on level fail"/>
+                <modifier value="enable_accvibrate" text="Vibrate" apply-on-change="true" source="ShockSaber.UI.vibrate.png" hover-hint="Vibrate on level fail"/>
+            </horizontal>
         </vertical>
     </scroll-view>
 </bg>
